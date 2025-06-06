@@ -34,9 +34,15 @@ export class JobFormPage {
     return await this.page.evaluate(el => el.validationMessage, element);
   }
 
-  async assertEmailValidation() {
+  async getEmailValidation() {
     await this.clickSubmit();
     const validationMessage = await this.getValidationMessage(this.emailInput);
+    return validationMessage;
+  }
+
+  async getFirstNameValidation(){
+    await this.clickSubmit();
+    const validationMessage = await this.getValidationMessage(this.firstNameInput);
     return validationMessage;
   }
 

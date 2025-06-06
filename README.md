@@ -33,14 +33,17 @@ npm install
 
 ## Running Tests
 
-To run the tests, use the following command:
+To run the tests on Chromium browser:
+```bash
+npx playwright test --project=chromium
+```
 
+For running all tests:
 ```bash
 npx playwright test
 ```
 
 For running tests in UI mode:
-
 ```bash
 npx playwright test --ui
 ```

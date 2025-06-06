@@ -18,21 +18,23 @@ export const test = base.extend({
   jobFormPage: async ({ page }, use) => {
     await use(new JobFormPage(page));
   },
-  // Helper to create page objects with a new tab
+
+  // create page objects with a new tab
   createPageWithTab: async ({}, use) => {
     await use({
       createJobDetailsPage: (tab) => new JobDetailsPage(tab),
       createJobFormPage: (tab) => new JobFormPage(tab)
     });
   },
+
   // Common navigation steps
   navigateToJobDetails: async ({ homepage, careersPage, createPageWithTab }, use) => {
     // Go to homepage and click Careers
     await homepage.goto();
     await homepage.clickCareers();
 
-    // Click on See All Openings, opens new tab
-    const jobListTab = await careersPage.clickSeeAllOpenings();
+    // Click on Currrent Job Openings, opens new tab
+    const jobListTab = await careersPage.clickCurrentJobOpeningsButton();
 
     // Navigate to job details
     const jobDetailsPageWithTab = createPageWithTab.createJobDetailsPage(jobListTab);

@@ -7,8 +7,8 @@ export class HomePage {
     async goto() {
       try {
         await this.page.goto('https://www.claritasrx.com/', {
-          timeout: 60000, // Increase timeout to 60 seconds
-          waitUntil: 'domcontentloaded' // Wait for DOM content to load instead of full page load
+          timeout: 60000, 
+          waitUntil: 'domcontentloaded'
         });
       } catch (error) {
         console.error('Failed to navigate to homepage:', error);
