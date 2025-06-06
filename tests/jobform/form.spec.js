@@ -12,8 +12,15 @@ test.describe('Job Application Flow', () => {
     await jobFormPage.clickApply();
   });
 
-  test('should show validation for invalid email input', async ({ page }) => {
-    await jobFormPage.fillDetails('subam', 'test', 'invalid-email', '1234567890', 'Delhi');
+  test('should show validation for invalid email input', async ({ page, testData}) => {
+    const invalidData = testData.formData.invalid;
+    await jobFormPage.fillDetails(
+      invalidData.firstName,
+      invalidData.lastName,
+      invalidData.email,
+      invalidData.phone,
+      invalidData.location
+    );
     await jobFormPage.clickSubmit();
     const validationMessage = await jobFormPage.getEmailValidation();
     if (page.context().browser().browserType().name() === 'chromium') {
@@ -22,8 +29,15 @@ test.describe('Job Application Flow', () => {
     //add conditions to check for other browsers
   });
 
-  test('should show required message when clicked on clear and then submit button', async ( {page} ) => {
-    await jobFormPage.fillDetails('subam', 'test', 'invalid-email', '1234567890', 'Delhi');
+  test('should show required message when clicked on clear and then submit button', async ( {page, testData} ) => {
+    const validData = testData.formData.valid;
+    await jobFormPage.fillDetails(
+      validData.firstName,
+      validData.lastName,
+      validData.email,
+      validData.phone,
+      validData.location
+    );
     await jobFormPage.clearForm();
     const validationMessage = await jobFormPage.getFirstNameValidation();
     if (page.context().browser().browserType().name() === 'chromium') {

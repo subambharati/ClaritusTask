@@ -3,8 +3,13 @@ import { HomePage } from '../pages/HomePage.js';
 import { CareersPage } from '../pages/CareersPage.js';
 import { JobDetailsPage } from '../pages/JobDetailsPage.js';
 import { JobFormPage } from '../pages/JobFormPage.js';
+import { testData } from './testData.js';
 // Extend the base test with custom fixtures
 export const test = base.extend({
+  // Add test data fixture
+  testData: async ({}, use) => {
+    await use(testData);
+  },
   // Define fixtures that will be available in all tests
   homepage: async ({ page }, use) => {
     await use(new HomePage(page));
