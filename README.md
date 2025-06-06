@@ -24,6 +24,11 @@ cd ClaritusTask
 npm install
 ```
 
+3. Install Playwright browsers:
+```bash
+npx playwright install
+```
+
 ## Project Structure
 
 - `/tests` - Contains all test files
