@@ -43,6 +43,7 @@ test.describe('Job Application Flow', () => {
     if (page.context().browser().browserType().name() === 'chromium') {
       expect(validationMessage).toContain("Please fill out this field.");
     }
-    //add conditions to check for other browsers
+    const isFormEmpty = await jobFormPage.isFormEmpty();
+    expect(isFormEmpty).toBe(true);
   });
 });

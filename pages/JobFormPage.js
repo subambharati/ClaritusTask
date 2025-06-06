@@ -11,6 +11,7 @@ export class JobFormPage {
     this.addressInput = page.locator("//input[@data-ui='address']");
     this.submitButton = page.locator("//button[@data-ui='apply-button']"); 
     this.clearButton = page.locator("//a[@data-ui='clear-section-0']");
+    this.form = page.locator("//div[@class='styles--3qHIU']/input");
   }
 
   async clickApply() {
@@ -48,5 +49,20 @@ export class JobFormPage {
 
   async clearForm(){
     await this.clearButton.click();
+  }
+
+  async checkFormData(){
+    const count = await this.form.count();
+    let formData = [];
+    for (let index = 0; index < count; index++){
+      const data = await this.form.nth(index).getAttribute('value');
+      formData.push(data);
+    }
+    return formData;
+  }
+
+  async isFormEmpty() {
+    const formData = await this.checkFormData();
+    return formData.every(value => value === null || value === '');
   }
 }
