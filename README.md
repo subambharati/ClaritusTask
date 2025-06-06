@@ -4,7 +4,7 @@ A Playwright-based testing project for automated testing.
 
 ## Project Overview
 
-This project uses Playwright, a powerful end-to-end testing framework, to automate browser testing. It's built with Node.js and TypeScript.
+This project uses Playwright, a powerful end-to-end testing framework, to automate browser testing. It's built with Node.js and JavaScript.
 
 ## Prerequisites
 
