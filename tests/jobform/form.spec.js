@@ -22,7 +22,7 @@ test.describe('Job Application Flow', () => {
     //add conditions to check for other browsers
   });
 
-  test('should show required message when clicked on clear button', async ( {page} ) => {
+  test('should show required message when clicked on clear and then submit button', async ( {page} ) => {
     await jobFormPage.fillDetails('subam', 'test', 'invalid-email', '1234567890', 'Delhi');
     await jobFormPage.clearForm();
     const validationMessage = await jobFormPage.getFirstNameValidation();
